@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    build: .
+    container_name: myweb
+    ports:
+      - "5004:5000"
+    volumes:
+      - myvolfinal:/code
+    environment:
+      FLASK_ENV: development
+  redis:
+    image: "redis:alpine"
+    container_name: myredis
+volumes:
+  myvolfinal:

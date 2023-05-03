@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5011:5000"
+    healthcheck:
+      test: curl --fail -s http://localhost:5011/ || exit 1
+      interval: 1m30s #Default 30s
+      timeout: 10s # Default 30s
+      retries: 3 #Default 3 intentos
+
+  redis:
+    image: "redis:alpine"
